@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMoveControl : MonoBehaviour {
-
-	public float MSpeed = 6;
-	public float JumpHeight = 300;
+	private Rigidbody rb;
+	private Vector3 normalizedVelocity;
 	private int CuLocked = 0;
-	public Rigidbody rb;
+	public float MSpeed = 100;
+	public float JumpHeight = 300;
+	public float walk;
 
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
+		rb = GetComponent<Rigidbody> ();
+		walk = 1;
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,13 @@ public class CharacterMoveControl : MonoBehaviour {
 		//jump
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			rb.AddForce (transform.up * JumpHeight);
+		}
+
+		//Normal walk speed limiter
+		if (rb.velocity.magnitude > walk) {
+			normalizedVelocity = rb.velocity.normalized * walk;
+			normalizedVelocity.y = rb.velocity.y;
+			rb.velocity = normalizedVelocity;
 		}
 
 

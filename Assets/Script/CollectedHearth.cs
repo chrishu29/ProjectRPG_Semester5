@@ -6,16 +6,13 @@ public class CollectedHearth : MonoBehaviour {
 
 	public AudioSource CollectSound;
 	public GameObject Heart;
+	public int HeartRotateSpeed;
 
-	// Use this for initialization
-	void Start () {
-		
+	void update(){
+		HeartRotateSpeed = 2;
+		transform.Rotate (0, HeartRotateSpeed, 0, Space.World);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 	void OnTriggerEnter() {
 		CollectSound.Play ();
 		HP.healthCount += 1;
