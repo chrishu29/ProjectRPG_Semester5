@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class PlayerCast : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
+	public static float distanceFromTarget;
+	public float toTarget;
+
 	void Update () {
-		
+		RaycastHit Hit;
+		if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward),out Hit)) 
+			{
+			toTarget = Hit.distance;
+			distanceFromTarget = toTarget;
+		}
 	}
 }

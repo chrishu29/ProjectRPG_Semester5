@@ -6,7 +6,7 @@ public class CharacterCameraCtrl : MonoBehaviour {
 
 	Vector2 mouseView;
 	Vector2 viewSmoother;
-	public float sensitivity=4;
+	public float sensitivity=3;
 	public float smoothing=2;
 
 	GameObject Player;
@@ -23,7 +23,7 @@ public class CharacterCameraCtrl : MonoBehaviour {
 		viewSmoother.x = Mathf.Lerp (viewSmoother.x, vec1.x, 1f / smoothing);
 		viewSmoother.y = Mathf.Lerp (viewSmoother.y, vec1.y, 1f	 / smoothing);
 		mouseView += viewSmoother;
-		mouseView.y = Mathf.Clamp (mouseView.y, -20f, 25f);
+		mouseView.y = Mathf.Clamp (mouseView.y, -15f, 15f);
 
 		transform.localRotation = Quaternion.AngleAxis (-mouseView.y, Vector3.right);
 		Player.transform.localRotation = Quaternion.AngleAxis (mouseView.x, Player.transform.up);
