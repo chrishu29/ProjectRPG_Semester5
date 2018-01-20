@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RPGProject.unity
     guid: bf9ffce6ba65ff84b91f824a6caf3ddd
+  - enabled: 1
+    path: Assets/Level1.unity
+    guid: 83f476725b9150a4b9550f5512d1d28d

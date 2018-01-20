@@ -7,6 +7,7 @@ public class CharacterMoveControl : MonoBehaviour {
 	private Vector3 normalizedVelocity;
 	private int CuLocked = 0;
 	public float MSpeed = 100;
+	public float RunSpeed = 300;
 	public float JumpHeight = 200;
 	public float walk;
 	public bool OnGround;
@@ -15,14 +16,14 @@ public class CharacterMoveControl : MonoBehaviour {
 	void Start () {
 		Cursor.lockState = CursorLockMode.Locked;
 		rb = GetComponent<Rigidbody> ();
-		walk = 1;
+		walk = 0;
 		corsair.SetActive (true);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//movement forward and backward
-		if (Input.GetKey (KeyCode.W)) {
+		if (Input.GetKey(KeyCode.W)) {
 			rb.AddForce (transform.forward * MSpeed);
 		} else if (Input.GetKey (KeyCode.S)) {
 			rb.AddForce (-transform.forward * MSpeed);
@@ -33,6 +34,11 @@ public class CharacterMoveControl : MonoBehaviour {
 			rb.AddForce (transform.right * MSpeed);
 		} else if (Input.GetKey (KeyCode.A)) {
 			rb.AddForce (-transform.right * MSpeed);
+		}
+
+		//run
+		if (Input.GetKey (KeyCode.LeftShift)) {
+			rb.AddForce (transform.forward * RunSpeed);
 		}
 
 		//jump

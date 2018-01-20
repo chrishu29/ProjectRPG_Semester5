@@ -18,12 +18,14 @@ public class Quest001Take : MonoBehaviour {
 
 	void OnMouseOver(){
 		if (theDistance <= 2) {
+			AttackBlocker.Blockattack = 1;
 			actionDisplay.SetActive (true);
 			actionText.SetActive (true);
 		}
 
 		if (Input.GetButtonDown ("ActionButton")) {
 			if (theDistance <= 2) {
+				AttackBlocker.Blockattack = 2;
 				actionDisplay.SetActive (false);
 				actionText.SetActive (false);
 				UIQuest.SetActive (true);
@@ -35,6 +37,7 @@ public class Quest001Take : MonoBehaviour {
 	}
 
 	void OnMouseExit(){
+		AttackBlocker.Blockattack = 0;
 		actionDisplay.SetActive (false);
 		actionText.SetActive (false);
 
