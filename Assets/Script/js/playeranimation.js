@@ -18,12 +18,14 @@ function Update () {
       GetComponent.<Animation>().CrossFade ("Walk");
    	else
       GetComponent.<Animation>().CrossFade ("idle");
-
+    
 
     if(Input.GetKeyDown(KeyCode.Space)) //jumping animation
     	GetComponent.<Animation>().CrossFade("Jump");
     if(Input.GetButtonDown("Fire1")){ //attack animation
     	GetComponent.<Animation>().CrossFade("Attack");
+    if(Input.GetButtonDown("Horizontal"))
+    	GetComponent.<Animation>().CrossFade("walk");
     }
     if(Input.GetKey(KeyCode.LeftShift)) //running animation
     	GetComponent.<Animation>().CrossFade("Run");
